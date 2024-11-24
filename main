@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .countdown-box {
+      background-color: #0073e6;
+      color: white;
+      border-radius: 15px;
+      padding: 20px 40px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+    .countdown-text {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .spinner {
+      font-size: 2rem;
+      font-weight: bold;
+      display: inline-block;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown-box">
+    <div class="countdown-text">Will redirect to Bluesky in</div>
+    <div class="spinner" id="countdown">10</div>
+  </div>
+
+  <script>
+    let countdown = 10;
+    const countdownElement = document.getElementById("countdown");
+
+    const interval = setInterval(() => {
+      countdown--;
+      countdownElement.textContent = countdown;
+      if (countdown === 0) {
+        clearInterval(interval);
+        window.location.href = "https://bsky.app"; // Redirects to Bluesky
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
